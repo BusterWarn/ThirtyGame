@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- PINK 50 https://material.io/design/color/the-color-system.html#tools-for-picking-colors -->
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="background">#02CAF9</color>
+    <color name="foregronud">#FFFFFF</color>
+    <color name="button">#1565C0</color>
+    <color name="c4">#0D47A1</color>
+</resources>
