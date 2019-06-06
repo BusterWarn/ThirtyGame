@@ -11,6 +11,11 @@ public class Model {
 
         dice        = new Dice[nrDice];
         usedDice    = new int[nrDice];
+
+        for (int i = 0; i < nrDice; i++) {
+
+            dice[i] = new Dice(i);
+        }
     }
 
     public void setStrategy(ThirtyDiceGameStrategy strategy) {
@@ -22,19 +27,19 @@ public class Model {
         return strategy.countScore(dice);
     }
 
-    public Dice[] rollDice() {
+    public int[] rollDice() {
 
-        Dice rolledDice[] = new Dice[dice.length];
+        int[] score = new int[dice.length];
 
         for (int i = 0; i < dice.length; i++) {
 
-            if (usedDice[i] == 1) {
+            if (usedDice[i] == 1 || true) {
 
                 dice[i].roll();
-                rolledDice[i].getScore();
+                score[i] = dice[i].getScore();
             }
         }
-        return rolledDice;
+        return score;
     }
 
     public void setDiceToUsed(int index) {

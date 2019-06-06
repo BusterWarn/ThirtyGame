@@ -9,104 +9,14 @@
     android:background="@color/background">
 
     <Button
-        android:id="@+id/rollDice"
+        android:id="@+id/playGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/button"
-        android:text="Roll dice"
+        android:text="Start game"
         android:textColor="@color/foregronud"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="588dp" />
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="299dp" />
 
-    <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/die1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:background="@color/background"
-                app:srcCompat="@drawable/grey1"
-                tools:layout_editor_absoluteX="147dp"
-                tools:layout_editor_absoluteY="57dp" />
-
-            <ImageButton
-                android:id="@+id/die2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:background="@color/background"
-                app:srcCompat="@drawable/grey1"
-                tools:layout_editor_absoluteX="27dp"
-                tools:layout_editor_absoluteY="174dp" />
-
-            <ImageButton
-                android:id="@+id/die3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:background="@color/background"
-                app:srcCompat="@drawable/grey1"
-                tools:layout_editor_absoluteX="34dp"
-                tools:layout_editor_absoluteY="69dp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/die4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:background="@color/background"
-                app:srcCompat="@drawable/grey1"
-                tools:layout_editor_absoluteX="143dp"
-                tools:layout_editor_absoluteY="174dp" />
-
-            <ImageButton
-                android:id="@+id/die5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:background="@color/background"
-                app:srcCompat="@drawable/grey1"
-                tools:layout_editor_absoluteX="266dp"
-                tools:layout_editor_absoluteY="174dp" />
-
-            <ImageButton
-                android:id="@+id/die6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:background="@color/background"
-                app:srcCompat="@drawable/grey1"
-                tools:layout_editor_absoluteX="266dp"
-                tools:layout_editor_absoluteY="57dp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
 
 </android.support.constraint.ConstraintLayout>
