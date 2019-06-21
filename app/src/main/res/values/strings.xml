@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">ThirtyGame</string>
+    <string name="title_activity_game">GameActivity</string>
+    <string name="start_new_game">Start new game</string>
+    <string name="start_rolling">Start rolling</string>
+    <string name="new_round">New round</string>
+    <string name="choose_strategy">Choose strategy</string>
+    <string name="roll_dice">Roll dice</string>
+    <string name="end_of_game">See high score</string>
+    <string name="quit_game">Quit</string>
+    <string name="score_display">Score:</string>
+    <string name="rounds_left_display">Rounds left:</string>
+    <string name="throws_left_display">Throws left:</string>
+    <string name="dice_score_display">Dice score:</string>
 </resources>
