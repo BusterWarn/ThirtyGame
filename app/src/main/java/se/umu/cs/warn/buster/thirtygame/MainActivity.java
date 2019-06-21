@@ -5,10 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-
-import se.umu.cs.warn.buster.thirtygame.model.Dice;
-import se.umu.cs.warn.buster.thirtygame.model.Model;
 
 public class MainActivity extends AppCompatActivity {
 
