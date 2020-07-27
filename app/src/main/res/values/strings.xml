@@ -12,4 +12,10 @@
     <string name="rounds_left_display">Rounds left:</string>
     <string name="throws_left_display">Throws left:</string>
     <string name="dice_score_display">Dice score:</string>
+    <string name="title_activity_insert_high_score">InsertHighScore</string>
+    <string name="save_score">Save Score</string>
+    <string name="high_scores">High Scores</string>
+    <string name="content_description_end_icon">High Scores</string>
+    <string name="main_menu">Main menu</string>
+
 </resources>

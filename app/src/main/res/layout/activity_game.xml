@@ -6,245 +6,103 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:padding="16dp"
-    tools:context=".GameActivity">
+    tools:context=".GameActivity"
+    >
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline"
+        android:id="@+id/game_activity_guidline_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="520dp" />
+        app:layout_constraintGuide_percent="0.4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
-    <Button
-        android:id="@+id/mainBtn"
+    <android.support.constraint.Guideline
+        android:id="@+id/game_activity_guidline_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <include
+        android:id="@+id/text_displays"
+        layout="@layout/content_game_activity_text_displays"
+        android:layout_width="177dp"
+        android:layout_height="202dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/button"
-        android:onClick="showPopupMenu"
-        android:text="@string/start_rolling"
-        android:textColor="@color/foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/menuBtn"
-        app:layout_constraintHorizontal_bias="0.259"
+        app:layout_constraintBottom_toBottomOf="@id/game_activity_guidline_top"
+        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/quitBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
-
-    <Button
-        android:id="@+id/menuBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/button"
-        android:text="@string/choose_strategy"
-        android:textColor="@color/foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/quitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:background="@color/button"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:text="@string/quit_game"
         android:textColor="@color/foreground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/game_activity_guidline_top"
+        app:layout_constraintLeft_toRightOf="@id/text_displays"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias="0.064"
+        app:layout_constraintHorizontal_bias="0.948"
+        />
 
-    <TableLayout
-        android:id="@+id/tableLayout"
+    <include
+        android:id="@+id/dice_table"
+        layout="@layout/content_game_activity_dice_table"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="@id/game_activity_guidline_bottom"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/game_activity_guidline_top"
+        app:layout_constraintVertical_bias="0.553" />
 
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/die0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/background"
-                android:padding="8dp"
-                app:srcCompat="@drawable/grey1"
-                tools:layout_editor_absoluteX="147dp"
-                tools:layout_editor_absoluteY="57dp" />
-
-            <ImageButton
-                android:id="@+id/die1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/background"
-                android:padding="8dp"
-                app:srcCompat="@drawable/grey1"
-                tools:layout_editor_absoluteX="27dp"
-                tools:layout_editor_absoluteY="174dp" />
-
-            <ImageButton
-                android:id="@+id/die2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/background"
-                android:padding="8dp"
-                app:srcCompat="@drawable/grey1"
-                tools:layout_editor_absoluteX="34dp"
-                tools:layout_editor_absoluteY="69dp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/die3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@color/background"
-                android:padding="8dp"
-                app:srcCompat="@drawable/grey1"
-                tools:layout_editor_absoluteX="143dp"
-                tools:layout_editor_absoluteY="174dp" />
-
-            <ImageButton
-                android:id="@+id/die4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/background"
-                android:padding="8dp"
-                app:srcCompat="@drawable/grey1"
-                tools:layout_editor_absoluteX="266dp"
-                tools:layout_editor_absoluteY="174dp" />
-
-            <ImageButton
-                android:id="@+id/die5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/background"
-                android:padding="8dp"
-                app:srcCompat="@drawable/grey1"
-                tools:layout_editor_absoluteX="266dp"
-                tools:layout_editor_absoluteY="57dp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
-
-    <TextView
-        android:id="@+id/scoreDisplay"
-        android:layout_width="48dp"
-        android:layout_height="18dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/score_display"
-        app:layout_constraintBottom_toTopOf="@+id/roundsLeftDisplay"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2" />
-
-    <TextView
-        android:id="@+id/scoreDisplayCount"
-        android:layout_width="34dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/roundsLeftDisplayCount"
-        app:layout_constraintStart_toStartOf="@+id/guideline2" />
-
-    <TextView
-        android:id="@+id/roundsLeftDisplay"
-        android:layout_width="81dp"
-        android:layout_height="18dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/rounds_left_display"
-        app:layout_constraintBottom_toTopOf="@+id/throwsLeftDisplay"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2" />
-
-    <TextView
-        android:id="@+id/roundsLeftDisplayCount"
-        android:layout_width="34dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/throwsLeftDisplayCount"
-        app:layout_constraintStart_toStartOf="@+id/guideline2" />
-
-    <TextView
-        android:id="@+id/throwsLeftDisplay"
-        android:layout_width="81dp"
-        android:layout_height="18dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/throws_left_display"
-        app:layout_constraintBottom_toTopOf="@+id/diceScoreDisplay"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2" />
-
-    <TextView
-        android:id="@+id/throwsLeftDisplayCount"
-        android:layout_width="34dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/diceScoreDisplayCount"
-        app:layout_constraintStart_toStartOf="@+id/guideline2" />
-
-    <TextView
-        android:id="@+id/diceScoreDisplay"
-        android:layout_width="81dp"
-        android:layout_height="18dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="24dp"
-        android:text="@string/dice_score_display"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2" />
-
-    <TextView
-        android:id="@+id/diceScoreDisplayCount"
-        android:layout_width="34dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="@+id/guideline2" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline2"
+    <Button
+        android:id="@+id/mainBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="148dp" />
+        android:layout_marginBottom="32dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:background="@color/button"
+        android:onClick="showPopupMenu"
+        android:text="@string/start_rolling"
+        android:textColor="@color/foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/strategyBtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <Button
+        android:id="@+id/strategyBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:background="@color/button"
+        android:text="@string/choose_strategy"
+        android:textColor="@color/foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/mainBtn"
+        />
+
 
 </android.support.constraint.ConstraintLayout>
