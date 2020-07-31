@@ -244,6 +244,8 @@ public class GameActivity extends AppCompatActivity {
             case Consts.STATE_END_OF_GAME:
                 Intent intent = new Intent(GameActivity.this, InsertHighScoreActivity.class);
                 intent.putExtra(Consts.gameScore, model.getTotalScore());
+                intent.putExtra(Consts.historyStrategy, model.getStrategyHistory());
+                intent.putExtra(Consts.historyScore, model.getScoreHistory());
                 startActivity(intent);
                 finish();
                 break;

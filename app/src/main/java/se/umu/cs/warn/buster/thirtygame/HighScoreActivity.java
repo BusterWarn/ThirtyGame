@@ -101,10 +101,13 @@ public class HighScoreActivity extends AppCompatActivity {
         TableRow row = new TableRow(this);
         TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
         row.setLayoutParams(lp);
-        TextView rowName = (TextView)getLayoutInflater()
-                .inflate(R.layout.style_text_view_high_scores_name, null);
-        TextView rowScore = (TextView)getLayoutInflater()
-                .inflate(R.layout.style_text_view_high_scores_score, null);
+
+        TextView rowName = new TextView(this);
+        TextView rowScore = new TextView(this);
+
+        rowName.setTextAppearance(this, R.style.ScoreTextViewLeft);
+        rowScore.setTextAppearance(this, R.style.ScoreTextViewRight);
+
         rowName.setText(name);
         rowScore.setText(String.valueOf(score));
 

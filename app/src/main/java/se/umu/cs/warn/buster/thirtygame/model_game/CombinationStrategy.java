@@ -69,7 +69,7 @@ public class CombinationStrategy implements ThirtyDiceGameStrategy, Parcelable {
      */
     @Override
     public String getName() {
-        return "Combination strategy: " + combination;
+        return "Combination: " + combination;
     }
 
     /**
@@ -102,11 +102,6 @@ public class CombinationStrategy implements ThirtyDiceGameStrategy, Parcelable {
                 }
             }
         }
-        System.out.println("Total score: " + score);
-        System.out.println("Dice used:");
-        for (int i = 0; i < usedDicePositon.length; i++) {
-            System.out.println("Dice: " + usedDicePositon[i] + " - " + dice[i]);
-        }
         return score;
     }
 
@@ -134,7 +129,6 @@ public class CombinationStrategy implements ThirtyDiceGameStrategy, Parcelable {
             if (nrDiceFound == combLen - 1) {
                 // Is last die available and does it match the sum?
                 if (usedDicePos[i] == 0 && (dice[i] + sum) == this.combination) {
-                    System.out.println("Set dice " + i + " to used. dice["+i+"] is " + dice[i] + ", sum is " + sum);
                     usedDicePos[i] = 1;
                     return dice[i] + sum;
                 }
@@ -146,7 +140,6 @@ public class CombinationStrategy implements ThirtyDiceGameStrategy, Parcelable {
 
                 // Is the correct combination found?
                 if (result == this.combination) {
-                    System.out.println("Set dice " + i + " to used. dice["+i+"] is " + dice[i] + ", sum is " + sum);
                     usedDicePos[i] = 1;
                     return result;
                 }
@@ -170,10 +163,6 @@ public class CombinationStrategy implements ThirtyDiceGameStrategy, Parcelable {
                     break;
                 }
             }
-        }
-        System.out.println("Dice sorted to order: ");
-        for (int i = 0; i < dice.length; i++) {
-            System.out.println("dice["+i+"]: " + dice[i]);
         }
     }
 }

@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 /**
@@ -26,7 +28,19 @@ public class InsertHighScoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_high_score);
-        getSupportActionBar().setTitle("Insert New High Score");
+
+        addRowToTable("Total score","", getIntent()
+                .getIntExtra(Consts.gameScore, -1));
+
+        String[] strategies = getIntent().getStringArrayExtra(Consts.historyStrategy);
+        int[] scores = getIntent().getIntArrayExtra(Consts.historyScore);
+        if (strategies != null && scores != null) {
+            for (int i = 0; i < strategies.length; i++) {
+                if (strategies[i].equals("") || scores[i] == -1)
+                    continue;
+                addRowToTable("R" + (i + 1), strategies[i], scores[i]);
+            }
+        }
 
         configureSaveScoreBtn();
     }
@@ -83,6 +97,37 @@ public class InsertHighScoreActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    /**
+     * Adds a single row to the table in the ScrollView with two strings and an integer representing
+     * a score.
+     * @param leftString String to the left, this string will be bold.
+     * @param middleString String in the middle.
+     * @param score The score, which will be centered right in row.
+     */
+    private void addRowToTable(String leftString, String middleString, int score) {
+        TableLayout tableLayout = findViewById(R.id.score_table);
+        TableRow row = new TableRow(this);
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+        row.setLayoutParams(lp);
+
+        TextView rowLeftString = new TextView(this);
+        TextView rowMiddleString = new TextView(this);
+        TextView rowScore = new TextView(this);
+
+        rowLeftString.setTextAppearance(this, R.style.ScoreTextViewBoldLeft);
+        rowMiddleString.setTextAppearance(this, R.style.ScoreTextViewLeft);
+        rowScore.setTextAppearance(this, R.style.ScoreTextViewRight);
+
+        rowLeftString.setText(leftString);
+        rowMiddleString.setText(middleString);
+        rowScore.setText(String.valueOf(score));
+
+        row.addView(rowLeftString);
+        row.addView(rowMiddleString);
+        row.addView(rowScore);
+        tableLayout.addView(row);
     }
 
 }

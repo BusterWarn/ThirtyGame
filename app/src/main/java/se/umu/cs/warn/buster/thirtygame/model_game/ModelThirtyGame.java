@@ -26,6 +26,8 @@ public class ModelThirtyGame implements Parcelable {
     private int totalScore;
     private int roundsLeft;
     private DiceRound diceRound;
+    private String[] strategyHistory;
+    private int[] scoreHistory;
     private ArrayList<ThirtyDiceGameStrategy> strategies;
 
     /**
@@ -35,6 +37,9 @@ public class ModelThirtyGame implements Parcelable {
         gameStarted = false;
         totalScore = 0;
         roundsLeft = Consts.NR_ROUNDS;
+        strategyHistory = new String[Consts.NR_ROUNDS];
+        scoreHistory = new int[Consts.NR_ROUNDS];
+        Arrays.fill(scoreHistory, -1);
         strategies = new ArrayList<>();
         strategies.add(new LowStrategy());
         for (int i = Consts.LOWEST_COMBINATION_STRATEGY; i <= Consts.HIGHEST_COMBINATION_STRATEGY; i++) {
@@ -52,6 +57,8 @@ public class ModelThirtyGame implements Parcelable {
         totalScore = in.readInt();
         roundsLeft = in.readInt();
         diceRound = in.readParcelable(DiceRound.class.getClassLoader());
+        in.readStringArray(strategyHistory);
+        in.readIntArray(scoreHistory);
         Parcelable[] parcelableArray = in.readParcelableArray(ThirtyDiceGameStrategy.class.getClassLoader());
         if (parcelableArray != null) {
             ThirtyDiceGameStrategy[] s = Arrays.copyOf(parcelableArray, parcelableArray.length,
@@ -83,7 +90,6 @@ public class ModelThirtyGame implements Parcelable {
         return 0;
     }
 
-
     /**
      * {@inheritDoc}
      */
@@ -93,6 +99,8 @@ public class ModelThirtyGame implements Parcelable {
         dest.writeInt(totalScore);
         dest.writeInt(roundsLeft);
         dest.writeParcelable(diceRound, flags);
+        dest.writeStringArray(strategyHistory);
+        dest.writeIntArray(scoreHistory);
         dest.writeParcelableArray(strategies.toArray(new ThirtyDiceGameStrategy[0]), flags);
     }
 
@@ -118,7 +126,8 @@ public class ModelThirtyGame implements Parcelable {
 
         // If this is not the first round
         if (diceRound != null) {
-            totalScore += diceRound.calculateScore();
+            int roundScore = diceRound.calculateScore();
+            totalScore += roundScore;
             ThirtyDiceGameStrategy strategy = diceRound.getStrategy();
             for (int i = 0; i < strategies.size(); i++) {
                 if (strategies.get(i).getName().equals(strategy.getName())) {
@@ -127,6 +136,7 @@ public class ModelThirtyGame implements Parcelable {
 
                 }
             }
+            putRoundToHistory(roundScore, strategy.getName());
         }
         diceRound = new DiceRound();
         roundsLeft--;
@@ -235,6 +245,24 @@ public class ModelThirtyGame implements Parcelable {
     }
 
     /**
+     * Gets an array with history of the games score per round.
+     * @return The array of each played out round and what the score was that round. If score is -1
+     * round has not been played out.
+     */
+    public int[] getScoreHistory() {
+        return scoreHistory;
+    }
+
+    /**
+     * Gets an array with history of the games chosen strategies per round.
+     * @return The array of each played out round and the selected strategy of that round. If string
+     * equals "" (empty) round has not been played out.
+     */
+    public String[] getStrategyHistory() {
+        return strategyHistory;
+    }
+
+    /**
      * Gets the color of a specific dice by calling DiceRound.
      * @see se.umu.cs.warn.buster.thirtygame.model_game.DiceRound#getDieColor(int)
      * @param id ID of the specific die.
@@ -255,5 +283,21 @@ public class ModelThirtyGame implements Parcelable {
     public void setStrategy(ThirtyDiceGameStrategy strategy) {
         if (diceRound != null)
             diceRound.setStrategy(strategy);
+    }
+
+    /**
+     * Fills the next empty item in the history arrays with a score and a strategy respectively.
+     * Should be used at the end of a round to indicate what strategy and score was used.
+     * @param score
+     * @param strategy
+     */
+    private void putRoundToHistory(int score, String strategy) {
+        for (int i = 0; i < scoreHistory.length; i++) {
+            if (scoreHistory[i] == -1) {
+                scoreHistory[i] = score;
+                strategyHistory[i] = strategy;
+                break;
+            }
+        }
     }
 }

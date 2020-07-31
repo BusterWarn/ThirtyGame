@@ -23,4 +23,6 @@ public class Consts {
     public static final String modelKey = "LeO59";
     public static final String gameScore = "KN2t8";
     public static final String gameName = "C25Op";
+    public static final String historyStrategy = "gqL87";
+    public static final String historyScore = "rXM74";
 }
